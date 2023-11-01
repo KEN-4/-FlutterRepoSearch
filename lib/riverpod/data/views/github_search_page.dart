@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_repo_search/riverpod/data/models/github_repository.dart';
 import 'package:flutter_repo_search/riverpod/data/viewmodels/repository_view_model.dart';
+import 'package:flutter_repo_search/riverpod/data/views/github_repository_detail_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class GitHubSearchPage extends ConsumerWidget {
@@ -23,8 +23,9 @@ class GitHubSearchPage extends ConsumerWidget {
                 border: OutlineInputBorder(),
               ),
               onSubmitted: (query) {
-                // 検索クエリを更新するロジックをここに追加します。
+                // 検索クエリを更新するロジック
                 ref.read(searchQueryProvider.notifier).state = query;
+                ref.refresh(githubSearchViewModelProvider);
               },
             ),
           ),
@@ -33,7 +34,7 @@ class GitHubSearchPage extends ConsumerWidget {
               loading: () => const CircularProgressIndicator(),
               error: (err, stack) => Text('Error: $err'),
               data: (repositories) {
-                // データ取得時に表示するWidgetを返却
+                // データ取得時に表示するウィジェット
                 return ListView.builder(
                   itemCount: repositories.length,
                   itemBuilder: (context, index) {
@@ -41,6 +42,14 @@ class GitHubSearchPage extends ConsumerWidget {
                     return ListTile(
                       title: Text(repository.name ?? 'No name provided'),
                       subtitle: Text(repository.description ?? 'No description provided'),
+                      onTap: () {
+                        // タップしたリポジトリの詳細ページへナビゲート
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => GitHubRepositoryDetailPage(repository: repository),
+                          ),
+                        );
+                      },
                     );
                   },
                 );
