@@ -7,11 +7,14 @@ part 'github_repository.g.dart';
 class GitHubRepository with _$GitHubRepository {
   factory GitHubRepository({
     String? name,
-    String? fullName,
-    String? htmlUrl,
-    int? stargazersCount,
+    @JsonKey(name: 'full_name') String? fullName,
+    @JsonKey(name: 'owner') Map<String, dynamic>? owner,
+    String? language,
+    @JsonKey(name: 'stargazers_count') int? stargazersCount,
+    @JsonKey(name: 'watchers_count') int? watchersCount,
+    @JsonKey(name: 'forks_count') int? forksCount,
+    @JsonKey(name: 'open_issues_count') int? openIssuesCount,
     String? description,
-    // その他のGitHubリポジトリ情報があればここに追加
   }) = _GitHubRepository;
 
   factory GitHubRepository.fromJson(Map<String, dynamic> json) =>

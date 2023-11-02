@@ -10,9 +10,13 @@ _$GitHubRepositoryImpl _$$GitHubRepositoryImplFromJson(
         Map<String, dynamic> json) =>
     _$GitHubRepositoryImpl(
       name: json['name'] as String?,
-      fullName: json['fullName'] as String?,
-      htmlUrl: json['htmlUrl'] as String?,
-      stargazersCount: json['stargazersCount'] as int?,
+      fullName: json['full_name'] as String?,
+      owner: json['owner'] as Map<String, dynamic>?,
+      language: json['language'] as String?,
+      stargazersCount: json['stargazers_count'] as int?,
+      watchersCount: json['watchers_count'] as int?,
+      forksCount: json['forks_count'] as int?,
+      openIssuesCount: json['open_issues_count'] as int?,
       description: json['description'] as String?,
     );
 
@@ -20,8 +24,12 @@ Map<String, dynamic> _$$GitHubRepositoryImplToJson(
         _$GitHubRepositoryImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
-      'fullName': instance.fullName,
-      'htmlUrl': instance.htmlUrl,
-      'stargazersCount': instance.stargazersCount,
+      'full_name': instance.fullName,
+      'owner': instance.owner,
+      'language': instance.language,
+      'stargazers_count': instance.stargazersCount,
+      'watchers_count': instance.watchersCount,
+      'forks_count': instance.forksCount,
+      'open_issues_count': instance.openIssuesCount,
       'description': instance.description,
     };

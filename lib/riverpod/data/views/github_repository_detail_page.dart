@@ -18,17 +18,22 @@ class GitHubRepositoryDetailPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            if (repository.fullName != null)
-              Text('Full name: ${repository.fullName}', style: TextStyle(fontSize: 18)),
+            if (repository.owner != null)
+              CircleAvatar(
+                backgroundImage: NetworkImage(repository.owner!['avatar_url']),
+              ),
             SizedBox(height: 10),
-            if (repository.stargazersCount != null)
-              Text('Stars: ${repository.stargazersCount}', style: TextStyle(fontSize: 18)),
+            Text('Language: ${repository.language}', style: TextStyle(fontSize: 18)),
             SizedBox(height: 10),
-            if (repository.htmlUrl != null)
-              Text('URL: ${repository.htmlUrl}', style: TextStyle(fontSize: 18)),
+            Text('Stars: ${repository.stargazersCount}', style: TextStyle(fontSize: 18)),
             SizedBox(height: 10),
-            if (repository.description != null)
-              Text('Description: ${repository.description}', style: TextStyle(fontSize: 16)),
+            Text('Watchers: ${repository.watchersCount}', style: TextStyle(fontSize: 18)),
+            SizedBox(height: 10),
+            Text('Forks: ${repository.forksCount}', style: TextStyle(fontSize: 18)),
+            SizedBox(height: 10),
+            Text('Open Issues: ${repository.openIssuesCount}', style: TextStyle(fontSize: 18)),
+            SizedBox(height: 10),
+            Text('Description: ${repository.description}', style: TextStyle(fontSize: 16)),
           ],
         ),
       ),
