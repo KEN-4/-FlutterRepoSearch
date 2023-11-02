@@ -15,20 +15,25 @@ class GitHubRepositoryDetailPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
+        // 詳細情報を縦に並べて表示します。
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             if (repository.fullName != null)
-              Text('Full name: ${repository.fullName}', style: TextStyle(fontSize: 18)),
+              Text('Full name: ${repository.fullName}',
+                  style: TextStyle(fontSize: 18)),
             SizedBox(height: 10),
             if (repository.stargazersCount != null)
-              Text('Stars: ${repository.stargazersCount}', style: TextStyle(fontSize: 18)),
+              Text('Stars: ${repository.stargazersCount}',
+                  style: TextStyle(fontSize: 18)),
             SizedBox(height: 10),
             if (repository.htmlUrl != null)
-              Text('URL: ${repository.htmlUrl}', style: TextStyle(fontSize: 18)),
+              Text('URL: ${repository.htmlUrl}',
+                  style: TextStyle(fontSize: 18)),
             SizedBox(height: 10),
             if (repository.description != null)
-              Text('Description: ${repository.description}', style: TextStyle(fontSize: 16)),
+              Text('Description: ${repository.description}',
+                  style: TextStyle(fontSize: 16)),
           ],
         ),
       ),

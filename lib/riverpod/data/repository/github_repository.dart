@@ -13,14 +13,14 @@ class GitHubSearchRepository {
       final repositories = await _dataSource.searchRepositories(query);
       return Result.success(repositories);
     } on DioError catch (dioError) {
-      // Pass the DioError object directly
+      // DioError オブジェクトを直接渡す
       return Result.failure(dioError);
     } catch (e) {
-      // Check if the error is an Exception
+      // エラーが例外かどうかを確認
       if (e is Exception) {
         return Result.failure(e);
       } else {
-        // If it's not an Exception, wrap it in a generic one
+        // 例外でない場合は、汎用例外でラップ
         return Result.failure(Exception('An error occurred: $e'));
       }
     }

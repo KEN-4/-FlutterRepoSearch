@@ -15,9 +15,9 @@ final githubSearchViewModelProvider = FutureProvider.autoDispose<List<GitHubRepo
     return searchResult.when(
       success: (repositories) => repositories,
       failure: (error) {
-        // Call toString on the error to get a string representation
+        // エラー時に toString を呼び出して文字列表現を取得
         ref.read(errorMessageProvider.notifier).state = error.toString();
-        // Return an empty list or something else based on the error
+        // エラーに基づいて空のリストを返す
         return [];
       },
     );
