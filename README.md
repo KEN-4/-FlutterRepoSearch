@@ -1,16 +1,33 @@
-# flutter_repo_search
+# GitHub Repository Search App
 
-A new Flutter project.
+このアプリは、Flutterフレームワークを使用して作成されたGitHubリポジトリ検索アプリです。簡単な操作でGitHubのリポジトリを検索し、詳細情報を確認することができる。
 
-## Getting Started
+## 機能
 
-This project is a starting point for a Flutter application.
+- **リポジトリ検索**: リポジトリ名を入力してGitHubでリポジトリを検索できます。
+- **詳細情報表示**: 検索結果のリポジトリをタップすると、リポジトリ名、オーナーアイコン、プロジェクト言語、Star数、Watcher数、Fork数、Issue数が表示される。
 
-A few resources to get you started if this is your first Flutter project:
+## 工夫した点
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **状態管理の最適化**: アプリの状態管理には、Riverpodを活用しています。これにより、よりテストしやすく、メンテナンスしやすいコードベースを実現した。
+- **エラーハンドリング**: 検索に失敗した場合や結果が0件の場合にエラーメッセージを表示するようにした。
+- **UI/UXの洗練**: シンプルで直感的なインターフェイスを心がけ、ユーザーが情報を素早く簡単に入手できるようにしています。これにより、初めてのユーザーでも迷うことなく使用できるようにした。
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## バージョン情報
+
+- VSCode: 1.83.1
+- Flutter: 3.13.8
+- Dart: 3.1.4
+- Riverpod: 2.4.5
+- Freezed: 2.4.5
+- Retrofit: 4.0.3
+- Dio: 5.3.3
+- Hooks: 0.20.3
+
+詳細なバージョン情報や開発環境については、上記のバージョン履歴を参照してください。
+
+## 参考文献
+
+このアプリの開発にあたり、以下のリソースが参考になりました。
+
+- [Riverpodを学んで初学者の壁をぶち破る - Qiita](https://qiita.com/taisei_dev/items/4c9d9572a56051a1d51f)
