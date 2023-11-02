@@ -32,27 +32,32 @@ class GitHubSearchPage extends ConsumerWidget {
           Expanded(
             child: asyncSearchResult.when(
               loading: () => const CircularProgressIndicator(),
-              error: (err, stack) => Text('Error: $err'),
+              error: (err, stack) => Center(child: Text('Error: $err')),
               data: (repositories) {
-                // データ取得時に表示するウィジェット
-                return ListView.builder(
-                  itemCount: repositories.length,
-                  itemBuilder: (context, index) {
-                    final repository = repositories[index];
-                    return ListTile(
-                      title: Text(repository.name ?? 'No name provided'),
-                      subtitle: Text(repository.description ?? 'No description provided'),
-                      onTap: () {
-                        // タップしたリポジトリの詳細ページへナビゲート
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => GitHubRepositoryDetailPage(repository: repository),
-                          ),
-                        );
-                      },
-                    );
-                  },
-                );
+                if (repositories.isEmpty) {
+                  // 検索結果が空の場合のメッセージ
+                  return Center(child: Text('No repositories found.'));
+                } else {
+                  // データ取得時に表示するウィジェット
+                  return ListView.builder(
+                    itemCount: repositories.length,
+                    itemBuilder: (context, index) {
+                      final repository = repositories[index];
+                      return ListTile(
+                        title: Text(repository.name ?? 'No name provided'),
+                        subtitle: Text(repository.description ?? 'No description provided'),
+                        onTap: () {
+                          // タップしたリポジトリの詳細ページへナビゲート
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => GitHubRepositoryDetailPage(repository: repository),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  );
+                }
               },
             ),
           ),
